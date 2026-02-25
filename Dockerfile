@@ -24,10 +24,4 @@ ENV PORT=8000
 
 EXPOSE $PORT
 
-CMD gunicorn app.main:app \
-    -k uvicorn.workers.UvicornWorker \
-    --workers 1 \
-    --bind "0.0.0.0:${PORT:-8000}" \
-    --timeout 120 \
-    --access-logfile - \
-    --error-logfile -
+CMD ["sh", "-c", "gunicorn app.main:app -k uvicorn.workers.UvicornWorker --workers 1 --bind 0.0.0.0:${PORT:-8000} --timeout 120 --access-logfile - --error-logfile -"]
