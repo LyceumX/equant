@@ -28,7 +28,7 @@ class Settings(BaseSettings):
     DEBUG: bool = False
 
     # ── CORS ─────────────────────────────────────────────────────────────────
-    CORS_ORIGINS: str = "http://localhost:3000"
+    CORS_ORIGINS: str = "https://equant.us.ci,http://localhost:3000"
 
     @property
     def cors_origins_list(self) -> list[str]:
