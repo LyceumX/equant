@@ -1,0 +1,28 @@
+# Next.js frontend — not needed in the backend Docker image
+node_modules/
+.next/
+src/
+public/
+*.ts
+*.tsx
+*.mjs
+package.json
+package-lock.json
+tsconfig.json
+postcss.config.mjs
+eslint.config.mjs
+
+# Git / tooling
+.git/
+.gitignore
+.devcontainer/
+.vscode/
+
+# Env files (injected by Railway at runtime)
+.env*
+backend/.env*
+
+# Python bytecode
+**/__pycache__/
+*.pyc
+*.pyo
