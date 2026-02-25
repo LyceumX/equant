@@ -1,0 +1,18 @@
+{
+  "chat.tools.terminal.autoApprove": {
+    "npx create-next-app@latest": true,
+    "yes": true,
+    "npx -y create-next-app@latest": true,
+    "/^cd /workspaces/equant/backend && python3 -c \"\nimport sys, ast, os\n\nfiles = \\[\n    'app/core/config\\.py',\n    'app/services/ai_analyzer\\.py',\n    'app/main\\.py',\n\\]\nok = True\nfor f in files:\n    try:\n        ast\\.parse\\(open\\(f\\)\\.read\\(\\)\\)\n        print\\(f'  ✓  \\{f\\}'\\)\n    except SyntaxError as e:\n        print\\(f'  ✗  \\{f\\}: \\{e\\}'\\)\n        ok = False\nsys\\.exit\\(0 if ok else 1\\)\n\"\n$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^python3 -c \"import ast; ast\\.parse\\(open\\('/workspaces/equant/backend/app/core/deps\\.py'\\)\\.read\\(\\)\\); print\\('syntax OK'\\)\"$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "pip": true,
+    "vercel": true,
+    "npm install": true
+  }
+}
