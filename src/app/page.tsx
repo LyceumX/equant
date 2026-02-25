@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { syncUserToSupabase } from "@/lib/syncUserToSupabase";
 import { AuthNav } from "@/app/components/AuthNav";
@@ -70,46 +71,72 @@ export default async function Home() {
                 icon: "📈",
                 title: "AI Stock Analysis",
                 body: "Get instant fundamental and sentiment analysis on any ticker powered by DeepSeek / GPT-4o.",
+                href: "/dashboard/analyze",
               },
               {
                 icon: "🔁",
                 title: "Strategy Backtesting",
                 body: "Run historical simulations on custom strategies with realistic slippage and commission models.",
+                href: null,
               },
               {
                 icon: "🗞️",
                 title: "News Scraper",
                 body: "Real-time market news aggregation with relevance scoring so you never miss a catalyst.",
+                href: null,
               },
               {
                 icon: "📊",
                 title: "Portfolio Tracker",
                 body: "Monitor holdings, P&L, and risk metrics in one unified dashboard.",
+                href: null,
               },
               {
                 icon: "🤖",
                 title: "RL-Powered Signals",
                 body: "Reinforcement-learning agents trained offline deliver daily signal suggestions.",
+                href: null,
               },
               {
                 icon: "🔒",
                 title: "Secure & Private",
                 body: "Your data lives in your own Supabase project. We never sell or share anything.",
+                href: null,
               },
-            ].map(({ icon, title, body }) => (
-              <div
-                key={title}
-                className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
-              >
-                <span className="text-3xl">{icon}</span>
-                <h3 className="mt-4 font-semibold text-zinc-900 dark:text-zinc-100">
-                  {title}
-                </h3>
-                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  {body}
-                </p>
-              </div>
-            ))}
+            ].map(({ icon, title, body, href }) => {
+              const inner = (
+                <>
+                  <span className="text-3xl">{icon}</span>
+                  <h3 className="mt-4 font-semibold text-zinc-900 dark:text-zinc-100">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                    {body}
+                  </p>
+                  {href && (
+                    <span className="mt-4 inline-block text-xs font-medium text-indigo-600 dark:text-indigo-400">
+                      Try it →
+                    </span>
+                  )}
+                </>
+              );
+              return href ? (
+                <Link
+                  key={title}
+                  href={href}
+                  className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md hover:border-indigo-300 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-indigo-700 block"
+                >
+                  {inner}
+                </Link>
+              ) : (
+                <div
+                  key={title}
+                  className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
+                >
+                  {inner}
+                </div>
+              );
+            })}
           </div>
         </section>
 
