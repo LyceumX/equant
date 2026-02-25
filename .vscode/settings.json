@@ -13,6 +13,7 @@
     },
     "pip": true,
     "vercel": true,
-    "npm install": true
+    "npm install": true,
+    "railway": true
   }
 }
